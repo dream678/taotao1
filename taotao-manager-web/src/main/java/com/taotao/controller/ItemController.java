@@ -10,6 +10,8 @@ import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.pojo.TbItem;
 import com.taotao.service.ItemService;
 
+import javax.annotation.Resource;
+
 /**
  * 商品管理Controller
  * <p>Title: ItemController</p>
@@ -20,7 +22,7 @@ import com.taotao.service.ItemService;
 @Controller
 public class ItemController {
 
-	@Autowired
+	@Resource
 	private ItemService itemService;
 	
 	@RequestMapping("/item/{itemId}")
@@ -28,5 +30,11 @@ public class ItemController {
 	public TbItem getItemById(@PathVariable Long itemId) {
 		TbItem tbItem = itemService.getItemById(itemId);
 		return tbItem;
+	}
+	@RequestMapping("/item/list")
+	@ResponseBody
+	public EasyUIDataGridResult getItemList(Integer page,Integer rows){
+		EasyUIDataGridResult result=itemService.getItemList(page, rows);
+		return result;
 	}
 }

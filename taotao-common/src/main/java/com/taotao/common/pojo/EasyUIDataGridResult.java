@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public class EasyUIDataGridResult implements Serializable{
-
+	//总记录数
 	private long total;
+	//数据集
 	private List rows;
 	public long getTotal() {
 		return total;
